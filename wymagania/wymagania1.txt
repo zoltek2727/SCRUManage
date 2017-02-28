@@ -1,0 +1,20 @@
+Wymagania z 22.02.17
+
+Aplikacja webowa do kontrolowania przebegu projektów w metodologii SCRUM
+
+- zarz¹dzanie sprintami
+- prowadzenie wiele ró¿nych projektów, wiele u¿ytkowników
+- dopasowanie u¿ytkowników do projektów
+- role u¿ytkowników (do wyboru ale w danym projekcie pe³ni 1 role)
+- w ka¿dym projekcie lista sprintów (które siê odby³y i które s¹ do zrobienia
+ (kiedy siê rozpocze³y i kiedy skoñczy³y))
+- jakie zadania w sk³ad sprintu
+- czas wykonywany w godzinach zadania
+- czas w porównaniu do szacowanego
+- mo¿liwoœæ dodawania komentarzy w sprincie
+- lista stanów w jakim siê mo¿e znaleŸæ zadanie (oczekuje na wykonanie, w trakcie, wykonano)
+- pewne zadania s¹ zwiazane z pewnymi osobami (tzn. ¿e mo¿na przydzieliæ zadania do roli np. developer)
+- sortowanie zadañ dla roli
+- zadania o danym stanie s¹ przypisane osobom
+- mo¿liwoœæ tworzenia stanów w³asnych (powiazania miêdzy stanami)
+
