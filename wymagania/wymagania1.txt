@@ -1,20 +1,21 @@
 Wymagania z 22.02.17
 
-Aplikacja webowa do kontrolowania przebegu projektów w metodologii SCRUM
+Aplikacja webowa do kontrolowania przebegu projektÃ³w w metodologii SCRUM
 
-- zarz¹dzanie sprintami
-- prowadzenie wiele ró¿nych projektów, wiele u¿ytkowników
-- dopasowanie u¿ytkowników do projektów
-- role u¿ytkowników (do wyboru ale w danym projekcie pe³ni 1 role)
-- w ka¿dym projekcie lista sprintów (które siê odby³y i które s¹ do zrobienia
- (kiedy siê rozpocze³y i kiedy skoñczy³y))
-- jakie zadania w sk³ad sprintu
+- zarzÄ…dzanie sprintami
+- prowadzenie wiele rÃ³Å¼nych projektÃ³w, wiele uÅ¼ytkownikÃ³w
+- dopasowanie uÅ¼ytkownikÃ³w do projektÃ³w
+- role uÅ¼ytkownikÃ³w (do wyboru ale w danym projekcie peÅ‚ni 1 role)
+- w kaÅ¼dym projekcie lista sprintÃ³w (ktÃ³re siÄ™ odbyÅ‚y i ktÃ³re sÄ… do zrobienia
+ (kiedy siÄ™ rozpoczeÅ‚y i kiedy skoÅ„czyÅ‚y))
+- jakie zadania w skÅ‚ad sprintu
 - czas wykonywany w godzinach zadania
-- czas w porównaniu do szacowanego
-- mo¿liwoœæ dodawania komentarzy w sprincie
-- lista stanów w jakim siê mo¿e znaleŸæ zadanie (oczekuje na wykonanie, w trakcie, wykonano)
-- pewne zadania s¹ zwiazane z pewnymi osobami (tzn. ¿e mo¿na przydzieliæ zadania do roli np. developer)
-- sortowanie zadañ dla roli
-- zadania o danym stanie s¹ przypisane osobom
-- mo¿liwoœæ tworzenia stanów w³asnych (powiazania miêdzy stanami)
+- czas w porÃ³wnaniu do szacowanego
+- moÅ¼liwoÅ›Ä‡ dodawania komentarzy w sprincie
+- lista stanÃ³w w jakim siÄ™ moÅ¼e znaleÅºÄ‡ zadanie (oczekuje na wykonanie, w trakcie, wykonano)
+- pewne zadania sÄ… zwiazane z pewnymi osobami (tzn. Å¼e moÅ¼na przydzieliÄ‡ zadania do roli np. developer)
+- sortowanie zadaÅ„ dla roli
+- zadania o danym stanie sÄ… przypisane osobom
+- moÅ¼liwoÅ›Ä‡ tworzenia stanÃ³w wÅ‚asnych (powiazania miÄ™dzy stanami)
 
+zmiana
