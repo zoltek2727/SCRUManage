@@ -18,4 +18,7 @@ Aplikacja webowa do kontrolowania przebegu projektów w metodologii SCRUM
 - zadania o danym stanie są przypisane osobom
 - możliwość tworzenia stanów własnych (powiazania między stanami)
 
-zmiana nr 3
+zmiana nr 4
+
+- zmiana trzeciego komputera
+- zmiana czwartego komputera

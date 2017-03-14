@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 <h2>Rejestracja</h2>
+=======
+
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content white-text">
+              <span class="card-title">Rejestracja</span>
+              
+
+>>>>>>> origin/master
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -9,21 +20,30 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, "Hasło" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Minimum <%= @minimum_password_length %> znaków)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Potwierdź hasło" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
+<<<<<<< HEAD
     <%= f.submit "Zarejestruj się" %>
+=======
+     <%= f.submit "Zarejestruj", :class => 'waves-effect waves-light btn' %>
+>>>>>>> origin/master
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+        </div>
+          </div>
+        </div>
+      </div>
