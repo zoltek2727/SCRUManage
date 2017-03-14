@@ -21,3 +21,4 @@ Aplikacja webowa do kontrolowania przebegu projektów w metodologii SCRUM
 zmiana nr 4
 
 - zmiana trzeciego komputera
+- zmiana czwartego komputera
