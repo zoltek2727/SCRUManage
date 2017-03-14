@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import "materialize/components/color";
+$primary-color: #3a3a3a !default;
+$secondary-color: #e8a01b !default;
+ @import "materialize";
+ @import "materialize/extras/nouislider";
+ @import "https://fonts.googleapis.com/icon?family=Material+Icons";
