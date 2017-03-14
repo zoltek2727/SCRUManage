@@ -25,6 +25,9 @@ gem 'coffee-rails', '~> 4.2'
 
 #Autoryzacja
 gem 'devise'
+#Framework dla html/css
+gem 'materialize-sass'
+gem 'material_icons'
 
 #DODANE-KONIEC
 
