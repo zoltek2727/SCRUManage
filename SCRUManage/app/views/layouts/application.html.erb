@@ -18,7 +18,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
     <% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
+  Zalogowano jako <strong><%= current_user.email %></strong>.
   <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete, :class => "waves-effect waves-light btn" %></li>
 <% else %>
    <li><%= link_to "Rejestracja", register_path, :class => "waves-effect waves-light btn" %></li>
@@ -46,16 +46,16 @@
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Kontakt</h5>
+                <p class="grey-text text-lighten-4">Link do naszego projektu: <a class="grey-text text-lighten-5" href="https://github.com/barpaw/SCRUManage">github</a></p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Autorzy</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/tomekgolab94">Tomasz Gołębiewski</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/zoltek2727">Sebastian Żółtowski</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/barpaw">Bartosz Pawlak</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/Stegenda">Adam Stegenda</a></li>
                 </ul>
               </div>
             </div>
@@ -63,7 +63,7 @@
           <div class="footer-copyright">
             <div class="container">
             © 2017 Copyright barpaw, zoltek, stegenda, gołomp
-            <a class="grey-text text-lighten-4 right" href="https://github.com/barpaw/SCRUManage">github</a>
+            
             </div>
           </div>
         </footer>
