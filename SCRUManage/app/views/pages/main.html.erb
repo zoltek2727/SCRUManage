@@ -1,0 +1,9 @@
+<p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista userów</p>
+<ul class="white-text" style="font-size:large; text-align:center;">
+<% @users = User.select("email") %>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.email %>
+    </li>
+  <% end %>
+</ul>
