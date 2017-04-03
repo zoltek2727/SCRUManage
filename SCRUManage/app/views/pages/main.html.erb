@@ -7,3 +7,12 @@
     </li>
   <% end %>
 </ul>
+
+<p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista projektów</p>
+<ul class="white-text" style="font-size:large; text-align:center;">
+  <% Project.all.each do |project| %>
+    <li>
+        <%= project.name %> ----- <%= project.description %>
+    </li>
+  <% end %>
+</ul>
