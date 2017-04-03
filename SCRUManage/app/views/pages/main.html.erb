@@ -16,3 +16,12 @@
     </li>
   <% end %>
 </ul>
+
+<p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista sprintów</p>
+<ul class="white-text" style="font-size:large; text-align:center;">
+  <% Sprint.all.each do |sprint| %>
+    <li>
+        <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %> ----- <%= sprint.projects_id %>
+    </li>
+  <% end %>
+</ul>
