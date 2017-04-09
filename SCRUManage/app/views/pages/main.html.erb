@@ -13,15 +13,12 @@
   <% Project.all.each do |project| %>
     <li>
         <%= project.name %> ----- <%= project.description %>
+        <% @sprints = Sprint.where(projects_id: project.id)
+        @sprints.each do |sprint| %>
+          === <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %>
+        <% end %>
     </li>
   <% end %>
 </ul>
 
-<p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista sprintów</p>
-<ul class="white-text" style="font-size:large; text-align:center;">
-  <% Sprint.all.each do |sprint| %>
-    <li>
-        <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %> ----- <%= sprint.projects_id %>
-    </li>
-  <% end %>
-</ul>
+<li><%= link_to "Nowy projekty", projects_new_path, :class => "waves-effect waves-light btn" %></li>

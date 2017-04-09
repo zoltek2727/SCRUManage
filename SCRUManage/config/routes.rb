@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     get 'login', to: 'devise/sessions#new'
     get 'register', to: 'devise/registrations#new'  
     get "/pages/:page" => "pages#show"
+    get 'projects/new'
+    get 'projects/edit'
+    resources :projects
   end
 end
