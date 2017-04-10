@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403214728) do
+ActiveRecord::Schema.define(version: 20170410223353) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "projectRole_id"
+    t.integer  "project_id"
+    t.index ["projectRole_id"], name: "index_assignments_on_projectRole_id"
+    t.index ["project_id"], name: "index_assignments_on_project_id"
+  end
+
+  create_table "project_roles", force: :cascade do |t|
+    t.string   "projRoleName"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +36,12 @@ ActiveRecord::Schema.define(version: 20170403214728) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "sprint_states", force: :cascade do |t|
+    t.string   "sprintStateName"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "sprints", force: :cascade do |t|
     t.string   "sprintName"
     t.text     "sprintDescription"
@@ -29,7 +50,29 @@ ActiveRecord::Schema.define(version: 20170403214728) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "project_id"
+    t.integer  "sprintState_id"
     t.index ["project_id"], name: "index_sprints_on_project_id"
+    t.index ["sprintState_id"], name: "index_sprints_on_sprintState_id"
+  end
+
+  create_table "task_states", force: :cascade do |t|
+    t.string   "taskStateName"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "taskName"
+    t.datetime "taskStart"
+    t.datetime "taskEnd"
+    t.text     "taskDescription"
+    t.time     "taskEstTime"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "sprint_id"
+    t.integer  "taskState_id"
+    t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
+    t.index ["taskState_id"], name: "index_tasks_on_taskState_id"
   end
 
   create_table "users", force: :cascade do |t|
