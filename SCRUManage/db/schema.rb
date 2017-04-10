@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 20170403214728) do
     t.datetime "EndDate"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "projects_id"
     t.integer  "project_id"
     t.index ["project_id"], name: "index_sprints_on_project_id"
-    t.index ["projects_id"], name: "index_sprints_on_projects_id"
   end
 
   create_table "users", force: :cascade do |t|
