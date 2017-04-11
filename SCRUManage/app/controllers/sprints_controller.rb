@@ -1,0 +1,26 @@
+class SprintsController < ApplicationController
+
+  def new
+    @sprint = Sprint.new
+    @sprints = Sprint.all
+  end
+
+  def edit
+    @sprint = Sprint.find(params[:id])
+  end
+
+  def create
+    @sprint = Sprint.create(sprint_params)
+    if @sprint.save
+      redirect_to '/pages/main'
+    else
+      render "new"
+    end
+  end
+
+  private
+
+  def sprint_params
+    params.require(:sprint).permit(:sprintName, :sprintDescription)
+  end
+end
