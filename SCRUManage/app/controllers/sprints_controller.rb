@@ -21,6 +21,6 @@ class SprintsController < ApplicationController
   private
 
   def sprint_params
-    params.require(:sprint).permit(:sprintName, :sprintDescription)
+    params.require(:sprint).permit(:sprintName, :sprintDescription, :projects_id)
   end
 end

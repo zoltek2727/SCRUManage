@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tasks/new'
+
+  get 'tasks/edit'
+
   get 'sprints/new'
 
   get 'sprints/edit'
@@ -14,9 +18,13 @@ Rails.application.routes.draw do
     get "/pages/:page" => "pages#show"
     get 'projects/new'
     get 'projects/edit'
+    get 'projects/index'
     resources :projects
     get 'sprints/new'
     get 'sprints/edit'
     resources :sprints
+    get 'tasks/new'
+    get 'tasks/edit'
+    resources :tasks
   end
 end
