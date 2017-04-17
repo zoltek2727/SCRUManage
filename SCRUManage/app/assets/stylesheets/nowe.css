@@ -51,3 +51,18 @@ html {
 .toast{
     background-color: #0da6ef;
 }
+
+
+
+.divider{
+    margin: 10px;
+}
+
+.additionalinfo{
+    font-size: 10px;
+    padding: 0px 40px 00px 40px;
+}
+
+.collection .collection-item {
+    background-color: rgba(224, 215, 103, 0.67);
+}

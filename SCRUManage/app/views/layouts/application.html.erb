@@ -19,7 +19,10 @@
       <ul class="right hide-on-med-and-down">
     <% if user_signed_in? %>
   
-  <li>Zalogowano jako <strong><%= current_user.email %></strong> </li>
+  <li>Zalogowano jako   <div class="chip">
+    <%= image_tag("user.png") %>
+    <%= current_user.email %>
+  </div> </li>
   <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete, :class => "waves-effect waves-light btn" %></li>
 <% else %>
    <li><%= link_to "Rejestracja", register_path, :class => "waves-effect waves-light btn" %></li>
