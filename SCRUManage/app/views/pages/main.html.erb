@@ -13,7 +13,7 @@
   <% Project.all.each do |project| %>
     <li>
         <%= project.name %> ----- <%= project.description %>
-        <% @sprints = Sprint.where(projects_id: project.id)
+        <% @sprints = Sprint.where(project_id: project.id)
         @sprints.each do |sprint| %>
           === <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %>
         <% end %>
