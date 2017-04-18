@@ -28,6 +28,7 @@ before_filter :authenticate_user!
     @project = Project.find(params[:id])
     if @project.update(project_params)
       redirect_to '/pages/main'
+       flash[:success] = "Edytowano pomyślnie."
     else
       render 'edit'
     end

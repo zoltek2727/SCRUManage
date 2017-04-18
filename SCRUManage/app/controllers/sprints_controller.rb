@@ -23,6 +23,7 @@ before_filter :authenticate_user!
     @sprint = Sprint.find(params[:id])
     if @sprint.update(sprint_params)
       redirect_to '/pages/main'
+       flash[:success] = "Edytowano pomyślnie."
     else
       render 'edit'
     end
