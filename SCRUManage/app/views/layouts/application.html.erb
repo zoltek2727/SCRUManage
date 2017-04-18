@@ -85,6 +85,17 @@
     $('select:not([multiple])').material_select();
 });
 
+    $(document).ready(function() {
+      var $container = $('main');
+    // initialize
+    $container.masonry({
+      columnWidth: '.col',
+      itemSelector: '.col',
+    });
+});
+
+
+
 
     </script>
   </body>

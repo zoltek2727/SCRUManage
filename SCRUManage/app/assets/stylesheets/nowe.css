@@ -75,3 +75,22 @@ html {
     margin-left: 20px !important;
     font-size: 10px;
 }
+
+.ptitle{
+font-size: x-large !important;
+    color: black !important;
+}
+
+.pdsc{
+padding: 5px 0px 0px 20px !important;
+}
+
+.ztitle{
+font-size: x-large !important;
+    color: maroon !important;
+}
+
+.zdsc{
+padding: 5px 0px 0px 20px !important;
+
+}

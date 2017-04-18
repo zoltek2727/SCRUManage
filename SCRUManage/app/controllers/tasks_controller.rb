@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_filter :authenticate_user!
   def new
     @task = Task.new
     @tasks = Task.all
@@ -21,6 +22,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to '/pages/main'
+      flash[:success] = "Edytowano pomyślnie."
     else
       render 'edit'
     end

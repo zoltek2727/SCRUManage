@@ -59,11 +59,11 @@
       <li class="collection-item avatar">
 
         <%= image_tag("project.png", :class => "circle") %>
-        <span class="title"><%= project.name %></span>
-        <p> <%= project.description %>  </p>   
+        <span class="title"> <%= link_to project.name, projects_index_path(:id => project.id) %></span>
+        <p class="sprintdsc"> <%= project.description %>  </p>   
         <% @projectRole = ProjectRole.where(id: assignment.projectRole_id) %>
           <% @projectRole.each do |projRole| %>
-            <p> <%= projRole.projRoleName %> </p>
+            <p style="color: #d43b3b;"> <i class="tiny material-icons">perm_identity</i> <%= projRole.projRoleName %> </p>
           <% end %>
       </li>
     <% end %>
@@ -73,9 +73,8 @@
          </ul>
       </div>
       <div class="card-action">
-         <a href="#">Zarządzanie projektami</a>
-         <a href="#">Dodaj Projekt</a>
-         <a href="#">Edytuj Projekt</a>
+         <%= link_to "Nowy projekt", projects_new_path %>
+
       </div>
    </div>
 </div>
