@@ -29,6 +29,7 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'material_icons'
 
+
 #DODANE-KONIEC
 
 
