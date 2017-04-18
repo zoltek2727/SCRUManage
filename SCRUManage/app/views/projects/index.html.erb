@@ -1,16 +1,17 @@
-  <% @project.name%>
-    <p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;"><%= @project.name %></p>
-    <ul class="white-text" style="font-size:large; text-align:center;">
-      <li>
-          <%= @project.description %> </br>
-          <% @sprints = Sprint.where(project_id: @project.id) 
-            @sprints.each do |sprint| %>
-            - <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %> </br>
-              <% @tasks = Task.where(sprint_id: sprint.id)
-              @tasks.each do |task| %>
-              * <%= task.taskName %> ----- <%= task.taskDescription %> </br>
-            <% end %>
-            </br>
+<% @project.name%>
+  <p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;"><%= @project.name %></p>
+  <ul class="white-text" style="font-size:large; text-align:center;">
+    <li>
+        <%= @project.description %> </br>
+        <% @sprints = Sprint.where(projects_id: @project.id) 
+          @sprints.each do |sprint| %>
+          - <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %>   <li><%= link_to "Edytuj sprint", sprints_edit_path(:id => sprint.id), :class => "waves-effect waves-light btn" %></li> </br>
+            <% @tasks = Task.where(sprint_id: sprint.id)
+            @tasks.each do |task| %>
+            * <%= task.taskName %> ----- <%= task.taskDescription %> <li><%= link_to "Edytuj zadanie", tasks_edit_path(:id => task.id), :class => "waves-effect waves-light btn" %></li> </br>
           <% end %>
-      </li>
-</ul>
+          </br>
+        <% end %>
+    </li>
+  </ul>
+  <li><%= link_to "Edytuj projekt", projects_edit_path(:id => @project.id), :class => "waves-effect waves-light btn" %></li>

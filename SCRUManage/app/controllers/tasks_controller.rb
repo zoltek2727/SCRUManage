@@ -17,6 +17,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to '/pages/main'
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def task_params

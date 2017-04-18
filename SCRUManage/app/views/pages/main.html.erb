@@ -52,16 +52,22 @@
 
 
 
-  <% Project.all.each do |project| %>
-    <li class="collection-item avatar">
+<% @assignments = Assignment.where(user_id: current_user.id) %>
+  <% @assignments.each do |assignment| %>
+    <% @projects = Project.where(id: assignment.project_id) %>
+    <% @projects.each do |project| %>
+      <li class="collection-item avatar">
 
-      <%= image_tag("project.png", :class => "circle") %>
-      <span class="title"> <%= link_to project.name, projects_index_path(:id => project.id) %></span>
-      <p> <%= project.description %>  </p>
-       
-     
-    </li>
-<% end %>
+        <%= image_tag("project.png", :class => "circle") %>
+        <span class="title"><%= project.name %></span>
+        <p> <%= project.description %>  </p>   
+        <% @projectRole = ProjectRole.where(id: assignment.projectRole_id) %>
+          <% @projectRole.each do |projRole| %>
+            <p> <%= projRole.projRoleName %> </p>
+          <% end %>
+      </li>
+    <% end %>
+  <% end %>
 
 
          </ul>
