@@ -16,8 +16,8 @@
         <%= f.text_field :sprintDescription %>
     </div>
 
-        <%= f.label :projects_id %>
-        <%= f.collection_select :projects_id, Project.order(:name),:id,:name, include_blank: false%>
+        <%= f.label :project_id %>
+        <%= f.collection_select :project_id, Project.order(:name),:id,:name, include_blank: false%>
 
     <div class="actions">
         <%= f.submit "Edytuj", :class => 'waves-effect waves-light btn' %>
