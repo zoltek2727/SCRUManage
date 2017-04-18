@@ -17,6 +17,7 @@ before_filter :authenticate_user!
   def create
     @project = Project.create(project_params)
     if @project.save
+      Assignment.create(projectRole_id: 1, project_id: @project.id, user_id: current_user.id)
       redirect_to '/pages/main'
     else
       render "new"
