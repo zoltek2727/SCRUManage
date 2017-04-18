@@ -63,5 +63,23 @@
 
 
 
+<p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista userów</p>
+<ul class="white-text" style="font-size:large; text-align:center;">
+<% @users = User.select("email") %>
+  <% @users.each do |user| %>
+    <li>
+      <%= user.email %>
+    </li>
+  <% end %>
+</ul>
+
+<p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista projektów developerskich</p>
+<ul class="white-text" style="font-size:large; text-align:center;">
+  <% Project.all.each do |project| %>
+    <li><%= link_to project.name, projects_index_path(:id => project.id) %></li>
+  <% end %>
+</ul>
+
 <li><%= link_to "Nowy projekt", projects_new_path, :class => "waves-effect waves-light btn" %></li>
 <li><%= link_to "Nowy sprint", sprints_new_path, :class => "waves-effect waves-light btn" %></li>
+<li><%= link_to "Nowe zadanie", tasks_new_path, :class => "waves-effect waves-light btn" %></li>

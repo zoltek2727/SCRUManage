@@ -1,0 +1,16 @@
+  <% @project.name%>
+    <p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;"><%= @project.name %></p>
+    <ul class="white-text" style="font-size:large; text-align:center;">
+      <li>
+          <%= @project.description %> </br>
+          <% @sprints = Sprint.where(projects_id: @project.id) 
+            @sprints.each do |sprint| %>
+            - <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %> </br>
+              <% @tasks = Task.where(sprint_id: sprint.id)
+              @tasks.each do |task| %>
+              * <%= task.taskName %> ----- <%= task.taskDescription %> </br>
+            <% end %>
+            </br>
+          <% end %>
+      </li>
+</ul>

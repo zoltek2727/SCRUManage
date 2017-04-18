@@ -3,6 +3,7 @@ before_filter :authenticate_user!
 
   def index
     @projects = Project.all
+    @project = Project.find(params[:id])
   end
 
   def new

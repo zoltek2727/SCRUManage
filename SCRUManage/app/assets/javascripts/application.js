@@ -18,3 +18,7 @@
 // DODANE
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
+$(document).ready(function() {
+    // Select - Single
+    $('select:not([multiple])').material_select();
+});

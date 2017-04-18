@@ -1,0 +1,31 @@
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content white-text">
+              <span class="card-title">Nowe zadanie</span>
+
+<%= form_for @task do |f| %>
+
+    <div class="field">
+        <%= f.label :taskName %>
+        <%= f.text_field :taskName, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.label :taskDescription %>
+        <%= f.text_field :taskDescription %>
+    </div>
+
+        <%= f.label :sprint_id %>
+        <%= f.collection_select :sprint_id, Sprint.order(:sprintName),:id,:sprintName, include_blank: false%>
+
+    <div class="actions">
+        <%= f.submit "Utwórz", :class => 'waves-effect waves-light btn' %>
+    </div>
+
+<% end %>
+
+        </div>
+          </div>
+        </div>
+      </div>
