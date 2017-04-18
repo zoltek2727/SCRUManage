@@ -20,3 +20,49 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
+
+.intro{
+    font-size: 60px;
+    text-align: center;
+    margin: 0px;
+    text-align: center;
+    color: white;
+}
+
+#error_explanation{
+    font-size: 10px;
+    color: red;
+    padding: 24px;
+
+}
+
+#error_explanation h2{
+    font-size: 2rem;
+    line-height: 100%;
+    margin: 1.78rem 0 1.424rem 0;
+    color: red;
+}
+
+.cardcenter{
+    left: 50%;
+}
+
+.toast{
+    background-color: #0da6ef;
+}
+
+
+
+.divider{
+    margin: 10px;
+}
+
+.additionalinfo{
+    font-size: 10px;
+    padding: 0px 40px 00px 40px;
+}
+
+.collection .collection-item {
+    background-color: rgba(224, 215, 103, 0.67);
+}

@@ -1,3 +1,68 @@
+<div class="row">
+<div class="col s12 m6">
+   <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+         <span class="card-title">Lista Użytkowników</span>
+         <p class="additionalinfo">W tej sekcji dodajemy użytkowników do projektów. (Tylko admin)</p>
+         <div class="divider"></div>
+         <ul class="white-text">
+            <% @users = User.select("email") %>
+            <% @users.each do |user| %>
+            <li>
+               <%= user.email %>
+            </li>
+            <% end %>
+         </ul>
+      </div>
+      <div class="card-action">
+         <a href="#">Zarządzanie Użytkownikami i Rolami</a>
+      </div>
+   </div>
+</div>
+
+<div class="col s12 m6">
+   <div class="card red indigo darken-2">
+      <div class="card-content white-text">
+         <span class="card-title">Projekty</span>
+         <p class="additionalinfo">W tej sekcji dodajemy Projekty. (Tylko admin)</p>
+         <div class="divider"></div>
+         <ul class="black-text collection">
+
+
+
+
+  <% Project.all.each do |project| %>
+    <li class="collection-item avatar">
+
+      <%= image_tag("project.png", :class => "circle") %>
+      <span class="title"><%= project.name %></span>
+      <p> <%= project.description %>  </p>
+       <% @sprints = Sprint.where(project_id: project.id) %>
+        <% @sprints.each do |sprint| %>
+       
+           <p>  <%= sprint.sprintName %> </p>
+           <p>  <%= sprint.sprintDescription %> </p>
+        <% end %>
+     
+    </li>
+<% end %>
+
+
+         </ul>
+      </div>
+      <div class="card-action">
+         <a href="#">Zarządzanie projektami</a>
+         <a href="#">Dodaj Projekt</a>
+         <a href="#">Edytuj Projekt</a>
+      </div>
+   </div>
+</div>
+</div>
+       
+
+
+
+
 <p class="white-text" style="font-size:larger; text-align:center; text-decoration: underline;">Lista userów</p>
 <ul class="white-text" style="font-size:large; text-align:center;">
 <% @users = User.select("email") %>
