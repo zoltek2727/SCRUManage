@@ -51,11 +51,9 @@ ActiveRecord::Schema.define(version: 20170418153106) do
     t.datetime "EndDate"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "projects_id"
     t.integer  "project_id"
     t.integer  "sprintState_id"
     t.index ["project_id"], name: "index_sprints_on_project_id"
-    t.index ["projects_id"], name: "index_sprints_on_projects_id"
     t.index ["sprintState_id"], name: "index_sprints_on_sprintState_id"
   end
 

@@ -3,7 +3,7 @@
   <ul class="white-text" style="font-size:large; text-align:center;">
     <li>
         <%= @project.description %> </br>
-        <% @sprints = Sprint.where(projects_id: @project.id) 
+        <% @sprints = Sprint.where(project_id: @project.id) 
           @sprints.each do |sprint| %>
           - <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %>   <li><%= link_to "Edytuj sprint", sprints_edit_path(:id => sprint.id), :class => "waves-effect waves-light btn" %></li> </br>
             <% @tasks = Task.where(sprint_id: sprint.id)
