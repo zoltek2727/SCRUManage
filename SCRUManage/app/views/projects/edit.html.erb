@@ -1,2 +1,28 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content white-text">
+              <span class="card-title">Edytuj projekt</span>
+
+<%= form_for @project do |f| %>
+
+    <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Edytuj", :class => 'waves-effect waves-light btn' %>
+    </div>
+
+<% end %>
+
+        </div>
+          </div>
+        </div>
+      </div>

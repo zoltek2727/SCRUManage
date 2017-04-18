@@ -19,6 +19,15 @@ before_filter :authenticate_user!
     end
   end
 
+  def update
+    @sprint = Sprint.find(params[:id])
+    if @sprint.update(sprint_params)
+      redirect_to '/pages/main'
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def sprint_params

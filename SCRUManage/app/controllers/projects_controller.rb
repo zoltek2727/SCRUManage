@@ -23,6 +23,15 @@ before_filter :authenticate_user!
     end
   end
 
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to '/pages/main'
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def project_params
