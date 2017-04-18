@@ -39,7 +39,7 @@
     </div>
   </nav>
 </header>
-<main>
+<main >
       <% flash.each do |message_type, message| %>
     <%= javascript_tag "Materialize.toast('#{message}', 4000)" %>
 <% end %>
@@ -79,6 +79,11 @@
     $(document).ready(function(){
       $(".button-collapse").sideNav();
     });
+
+    $(document).ready(function() {
+    // Select - Single
+    $('select:not([multiple])').material_select();
+});
 
 
     </script>

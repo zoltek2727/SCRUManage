@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+
+
  */
  @import "materialize/components/color";
 $primary-color: #610f0f !default;
@@ -20,3 +22,4 @@ $card-bg-color: #0F4261 !default;
  @import "materialize";
  @import "materialize/extras/nouislider";
  @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+

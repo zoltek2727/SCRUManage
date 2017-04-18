@@ -3,7 +3,7 @@
     <ul class="white-text" style="font-size:large; text-align:center;">
       <li>
           <%= @project.description %> </br>
-          <% @sprints = Sprint.where(projects_id: @project.id) 
+          <% @sprints = Sprint.where(project_id: @project.id) 
             @sprints.each do |sprint| %>
             - <%= sprint.sprintName %> ----- <%= sprint.sprintDescription %> </br>
               <% @tasks = Task.where(sprint_id: sprint.id)
