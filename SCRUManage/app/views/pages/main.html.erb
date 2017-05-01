@@ -87,7 +87,10 @@
          <p class="additionalinfo">W tej sekcji dodajemy sprinty do projektów. (Tylko admin)</p>
          <div class="divider"></div>
          <ul class="collection">
-             <% Project.all.each do |project| %>
+         <% @assignments = Assignment.where(user_id: current_user.id) %>
+         <% @assignments.each do |assignment| %>
+            <% @projects = Project.where(id: assignment.project_id) %>
+            <% @projects.each do |project| %>
     <li class="collection-item">
 
       
@@ -101,6 +104,7 @@
         <% end %>
      
     </li>
+  <% end %>
 <% end %>
 
          </ul>
@@ -121,18 +125,25 @@
          <p class="additionalinfo">W tej sekcji dodajemy zadania do sprintów. (Tylko admin)</p>
          <div class="divider"></div>
          <ul class="collection">
-            <% Sprint.all.each do |sprint| %>
-            <li class="collection-item">
-               <b class="sprint"> Sprint: </b> <b style="color: #195210;"><%= sprint.sprintName %> </b>
-               <div class="divider"></div>
-               <% @tasks = Task.where(sprint_id: sprint.id) %>
-               <% @tasks.each do |task| %>
-               <p >  <%= task.taskName %> </p>
-               <p class="sprintdsc">  <%= task.taskDescription %> </p>
-               <% end %>
+         <% @assignments = Assignment.where(user_id: current_user.id) %>
+         <% @assignments.each do |assignment| %>
+            <% @projects = Project.where(id: assignment.project_id) %>
+            <% @projects.each do |project| %>
+              <% @sprints = Sprint.where(project_id: project.id) %>
+              <% @sprints.each do |sprint| %>
+              <li class="collection-item">
+                <b class="sprint"> Sprint: </b> <b style="color: #195210;"><%= sprint.sprintName %> </b>
+                <div class="divider"></div>
+                <% @tasks = Task.where(sprint_id: sprint.id) %>
+                <% @tasks.each do |task| %>
+                <p >  <%= task.taskName %> </p>
+                <p class="sprintdsc">  <%= task.taskDescription %> </p>
+                <% end %>
 
-            </li>
+              </li>
+              <% end %>
             <% end %>
+          <% end %>
          </ul>
       </div>
       <div class="card-action">
