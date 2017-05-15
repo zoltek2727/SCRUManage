@@ -63,8 +63,10 @@
         <p class="sprintdsc"> <%= project.description %>  </p>   
         <% @projectRole = ProjectRole.where(id: assignment.projectRole_id) %>
           <% @projectRole.each do |projRole| %>
-            <p style="color: #d43b3b;"> <i class="tiny material-icons">perm_identity</i> <%= projRole.projRoleName %> </p>
+            <p style="color: #083832; font-size: 11px;"> <i class="tiny material-icons">perm_identity</i> <%= projRole.projRoleName %> </p>
           <% end %>
+          <p style="color: #383838; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= project.StartDate%> </p>
+          <p style="color: #383838; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= project.EndDate %> </p>
       </li>
     <% end %>
   <% end %>

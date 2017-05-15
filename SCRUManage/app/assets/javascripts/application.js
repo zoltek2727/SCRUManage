@@ -19,5 +19,9 @@
 //= require materialize-sprockets
 //= require materialize/extras/nouislider
 
+//= require materialize
+
 //= require masonry.pkgd
+
+
 

@@ -4,6 +4,19 @@
       <div class="card-content white-text">
          <span class="card-title"> <%= @project.name%> </span>
          <p class="additionalinfo"><%= @project.description %></p>
+          <div class="divider"></div>
+
+          
+              <% @assignments = Assignment.where(user_id: current_user.id).where(project_id: @project.id) %>
+  <% @assignments.each do |assignment| %>
+        <% @projectRole = ProjectRole.where(id: assignment.projectRole_id) %>
+           <% @projectRole.each do |project| %>
+            <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">perm_identity</i> <%= project.projRoleName %> </p>
+    <% end %>
+  <% end %>
+
+          <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= @project.StartDate%> </p>
+          <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= @project.EndDate %> </p>
          <div class="divider"></div>
 
 <ul class="black-text collection">
@@ -15,6 +28,8 @@
           <%= image_tag("sprint.png", :class => "circle") %>
           <span class="title"><%= sprint.sprintName %></span>
           <p class="pdsc"> <%= sprint.sprintDescription %> </p>
+          <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= sprint.StartDate%> </p>
+          <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= sprint.EndDate %> </p>
              <%= link_to "Edytuj sprint", sprints_edit_path(:id => sprint.id), :class => "white-text secondary-content" %>
 
            </li>
@@ -25,6 +40,11 @@
           <span class="title"> <%= task.taskName %></span>
 
              <p class="zdsc">  <%= task.taskDescription %> </p>
+
+
+
+          <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= task.taskStart%> </p>
+          <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= task.taskEnd %> </p>
 
             <%= link_to "Edytuj zadanie", tasks_edit_path(:id => task.id), :class => "white-text secondary-content" %>
           <% end %>

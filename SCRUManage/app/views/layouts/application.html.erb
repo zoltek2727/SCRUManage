@@ -5,9 +5,19 @@
     <%= csrf_meta_tags %>
 
 
+<%= stylesheet_link_tag "https://unpkg.com/flatpickr/dist/flatpickr.min.css" %> 
+
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        <%= stylesheet_link_tag "nowe.css" %> 
+    <%= stylesheet_link_tag "nowe.css" %> 
+<%= javascript_include_tag 'https://unpkg.com/flatpickr'%>
+<%= javascript_include_tag 'https://npmcdn.com/flatpickr/dist/l10n/pl.js'%>
+
+        <%= stylesheet_link_tag "nadpisz.css" %> 
+
+
   </head>
 
   <body>
@@ -94,8 +104,12 @@
     });
 });
 
-
-
+$(".datepicker").flatpickr({
+    enableTime: true,
+    minDate: "today",
+    time_24hr: true,
+    locale: "pl"
+});
 
     </script>
   </body>

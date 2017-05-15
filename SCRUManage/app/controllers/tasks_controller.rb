@@ -31,6 +31,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:taskName, :taskDescription, :sprint_id)
+    params.require(:task).permit(:taskName, :taskDescription, :taskStart, :taskEnd, :sprint_id)
   end
 end
