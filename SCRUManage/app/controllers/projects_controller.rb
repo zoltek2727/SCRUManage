@@ -19,6 +19,7 @@ before_filter :authenticate_user!
     if @project.save
       Assignment.create(projectRole_id: 1, project_id: @project.id, user_id: current_user.id)
       redirect_to '/pages/main'
+      flash[:success] = "Dodano pomyślnie."
     else
       render "new"
     end
@@ -37,7 +38,7 @@ before_filter :authenticate_user!
   private
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :StartDate, :EndDate)
   end
 
 end

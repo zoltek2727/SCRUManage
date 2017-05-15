@@ -65,6 +65,8 @@
           <% @projectRole.each do |projRole| %>
             <p style="color: #d43b3b;"> <i class="tiny material-icons">perm_identity</i> <%= projRole.projRoleName %> </p>
           <% end %>
+          <p style="color: #383838; font-size: 11px;"> <i class="tiny material-icons">schedule</i> <%= project.StartDate%> </p>
+          <p style="color: #383838; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> <%= project.EndDate %> </p>
       </li>
     <% end %>
   <% end %>
