@@ -16,6 +16,16 @@
         <%= f.text_field :taskDescription %>
     </div>
 
+            <div class="field">
+        <%= f.label :taskStart %>
+        <%= f.text_field :taskStart, class: "datepicker"%>
+    </div>
+
+        <div class="field">
+        <%= f.label :taskEnd %>
+        <%= f.text_field :taskEnd, class: "datepicker"%>
+    </div>
+
         <%= f.label :sprint_id %>
         <%= f.collection_select :sprint_id, Sprint.order(:sprintName),:id,:sprintName, include_blank: false%>
 

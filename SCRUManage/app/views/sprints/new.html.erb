@@ -16,6 +16,16 @@
         <%= f.text_field :sprintDescription %>
     </div>
 
+        <div class="field">
+        <%= f.label :StartDate %>
+        <%= f.text_field :StartDate, class: "datepicker"%>
+    </div>
+
+        <div class="field">
+        <%= f.label :EndDate %>
+        <%= f.text_field :EndDate, class: "datepicker"%>
+    </div>
+
         <%= f.label :projects_id %>
         <%= f.collection_select :project_id, Project.order(:name),:id,:name, include_blank: false%>
 
