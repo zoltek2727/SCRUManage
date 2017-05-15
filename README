@@ -1,0 +1,69 @@
+1. Środowiskiem uruchomieniowym dla Ruby on Rails (RoR) jest system w wersji 16.04
+2. Przejdź do terminala i wykonuj podane czynności
+
+3. Poniższy krok zainstaluje zależności dla Ruby
+
+sudo apt-get update
+sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev nodejs
+
+4. Następnie z użyciem metody rbenv instalujemy środowisko Ruby
+
+cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+rbenv install 2.4.0
+rbenv global 2.4.0
+ruby -v
+
+5. W kolejnym kroku instalujemy bundlera czyli element, który będzie za nas pilnował aktualności komponentów
+
+gem install bundler
+
+6. Następnie konfigurujemy Gita, w apostrofach używamy danych których użyliśmy przy zakładaniu konta na githubie
+
+git config --global color.ui true
+git config --global user.name "TWOJA NAZWA"
+git config --global user.email "TY@EMAIL.com"
+ssh-keygen -t rsa -b 4096 -C "TY@EMAIL.com"
+
+7. W następnym kroku pobieramy świeżo wygenerowany klucz SSH komendą
+
+cat ~/.ssh/id_rsa.pub
+
+i dodajemy na Github: link:https://github.com/settings/keys
+
+8. Sprawdzamy czy działa
+
+ssh -T git@github.com
+
+powinninśmy dostać wiadomość
+
+Hi excid3! You've successfully authenticated, but GitHub does not provide shell access.
+
+9. Kolejny krok to instalacja Rails, zaczynamy od instalacji nodejs
+
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+10. Następnie instalujemy Rails
+
+gem install rails -v 5.0.1
+
+11. Aby plik wykonywalny był dostępny należy wpisać
+
+rbenv rehash
+
+12. Dla sprawdzenia czy Rails się nam zainstalowało wpisujemy
+
+rails -v
+
+13. Aby uruchomić stronę należy wpisać
+
+rails s
