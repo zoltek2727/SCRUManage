@@ -48,4 +48,4 @@ License
 MIT
 
 
-**Free Software, Hell Yeah!**
+** Adaś Bartuś Sebuś Gołomb **
