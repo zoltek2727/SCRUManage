@@ -6,7 +6,9 @@ Aplikacja webowa do kontrolowania przebegu projektów w metodologii SCRUM.
 ### Instalacja
 
 OS: Linux 
+
 Ruby: ruby 2.4.0p0 
+
 Rails: Rails 5.0.2
 
 1.) Instalacja zależności dla Ruby / Rails
