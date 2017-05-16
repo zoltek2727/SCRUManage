@@ -48,4 +48,4 @@ License
 MIT
 
 
-** Adaś Bartuś Sebuś Gołomb **
+**Adaś Bartuś Sebuś Gołomb**
