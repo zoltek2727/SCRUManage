@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'assignments/new'
+
+  get 'assignments/edit'
+
   get 'tasks/new'
 
   get 'tasks/edit'
@@ -26,5 +30,8 @@ Rails.application.routes.draw do
     get 'tasks/new'
     get 'tasks/edit'
     resources :tasks
+    get 'assignments/new'
+    get 'assignments/edit'
+    resources :assignments
   end
 end

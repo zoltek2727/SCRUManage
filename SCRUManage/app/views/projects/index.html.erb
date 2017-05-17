@@ -59,6 +59,32 @@
         <%= link_to "Edytuj projekt", projects_edit_path(:id => @project.id) %>
 
       </div>
+      <span class="card-title"> Lista użytkowników </span> </br>
+      <% @assignments = Assignment.where(project_id: @project.id)
+        @assignments.each do |assignment| %>
+        <% @users = User.where(id: assignment.user_id)
+          @users.each do |user| %>
+          <%= user.email %>
+          <% @projectRoles = ProjectRole.where(id: assignment.projectRole_id)
+            @projectRoles.each do |projectRole| %>
+            <%= projectRole.projRoleName %>
+          <% end %>
+          <% @adminAssignments = Assignment.where(project_id: @project.id)
+            @adminAssignments.each do |adminAssignment| %>
+            <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
+              <%= link_to "Edytuj przydział", assignments_edit_path(:id => assignment.id) %>
+              <%= link_to "Usuń przydział", assignment, method: :delete, data: { confirm: "Na pewno?" } %>
+            <% end %>
+          <% end %>
+          </br>
+        <% end %>
+      <% end %>
+      <% @adminAssignments = Assignment.where(project_id: @project.id)
+        @adminAssignments.each do |adminAssignment| %>
+        <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
+          <%= link_to "Nowy przydział", assignments_new_path(:project_id => @project.id) %>
+        <% end %>
+      <% end %>
    </div>
 </div>
 
