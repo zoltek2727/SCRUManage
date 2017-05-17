@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content_comProj: MyText
+  date_comProj: 2017-05-17 02:05:03
+
+two:
+  content_comProj: MyText
+  date_comProj: 2017-05-17 02:05:03
