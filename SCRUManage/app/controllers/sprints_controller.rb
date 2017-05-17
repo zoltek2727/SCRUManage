@@ -32,6 +32,6 @@ before_filter :authenticate_user!
   private
 
   def sprint_params
-    params.require(:sprint).permit(:sprintName, :sprintDescription, , :StartDate, :EndDate, :project_id)
+    params.require(:sprint).permit(:sprintName, :sprintDescription, :StartDate, :EndDate, :project_id)
   end
 end
