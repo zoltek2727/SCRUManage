@@ -34,13 +34,26 @@ $ ls
 app  config     db    Gemfile       lib  public    README.md  tmp
 bin  config.ru  exit  Gemfile.lock  log  Rakefile  test       vendor
 ```
+5.) Instalacja gemów
+```sh
+$ bundle install
+```
+6.) Migracja
+```sh
+$ rails db:migrate 
+```
+7.) Aby wypełnić bazę podstawowymi danymi przejdź do folderu 'db', otwórz plik seeds.rb, a następnie odkomentuj wszytskie linie poza komentarzem wygenerowanym automatycznie i wykonaj poniższe polecenie.
 
-5.) Uruchom serwer
+```sh
+$ rake db:setup
+```
+8.) Uruchom serwer
 ```sh
 $ rails s
 LUB / or
 $ rails server
 ```
+
 
 License
 ----
