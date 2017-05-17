@@ -6,14 +6,7 @@
 
 <%= form_for @assignment do |f| %>
 
-    <% @assignments = Assignment.where(project_id: params[:project_id])
-       @assignments.each do |assignment| %>
-        <% @users = User.where(id: assignment.user_id) %>
-    
-    <% end %>
-    <% @users.each do |user| %>
-        <%= user.email %>
-    <% end %>
+    <% @users = User.where.not(users: {id: User.select(:id).joins(:assignments).where(assignments: {project_id: params[:project_id]})}) %>
 
     <%= f.label :User %>
     <%= f.collection_select :user_id, @users.order(:email),:id,:email, include_blank: false%>

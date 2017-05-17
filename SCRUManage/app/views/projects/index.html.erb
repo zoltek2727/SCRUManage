@@ -46,14 +46,19 @@
             @projectRoles.each do |projectRole| %>
             <%= projectRole.projRoleName %>
           <% end %>
-          <%= link_to "Edytuj przydział", assignments_edit_path(:id => assignment.id) %>
-          <%= link_to "Usuń przydział", assignment, method: :delete, data: { confirm: "Na pewno?" } %>
+          <% @adminAssignments = Assignment.where(project_id: @project.id)
+            @adminAssignments.each do |adminAssignment| %>
+            <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
+              <%= link_to "Edytuj przydział", assignments_edit_path(:id => assignment.id) %>
+              <%= link_to "Usuń przydział", assignment, method: :delete, data: { confirm: "Na pewno?" } %>
+            <% end %>
+          <% end %>
           </br>
         <% end %>
       <% end %>
-      <% @assignments = Assignment.where(project_id: @project.id)
-        @assignments.each do |assignment| %>
-        <% if assignment.user_id == current_user.id && assignment.projectRole_id == 1%>
+      <% @adminAssignments = Assignment.where(project_id: @project.id)
+        @adminAssignments.each do |adminAssignment| %>
+        <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
           <%= link_to "Nowy przydział", assignments_new_path(:project_id => @project.id) %>
         <% end %>
       <% end %>

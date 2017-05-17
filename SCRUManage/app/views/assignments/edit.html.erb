@@ -6,8 +6,12 @@
 
 <%= form_for @assignment do |f| %>
 
-        <%= f.label :User %>
-        <%= f.collection_select :user_id, User.order(:email),:id,:email, include_blank: false%>
+        Edytuejsz dla:
+        </br>
+        <% @users = User.where(id: @assignment.user_id) %>
+        <% @users.each do |user| %>
+          <%= user.email %>
+        <% end %>
 
         <%= f.label :Rola %>
         <%= f.collection_select :projectRole_id, ProjectRole.order(:projRoleName),:id,:projRoleName, include_blank: false%>
