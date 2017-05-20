@@ -152,26 +152,22 @@
 
 
   <ul class="collection">
-
+  <% @comments = Comment.where(project_id: @project.id) %>
+  <% @comments.each do |comment| %>
     <li class="collection-item avatar">
        <%= image_tag("user.png", class: "circle") %>
       <p>
-      <span style="font-size: 12px;"> polska@wp.pl </span> <br>
-      <span style="font-size: 10px;"> 20.05.2017 15:41 </span> <br>
-        <span>   Super projekt pozdrawiam! </span>
+      <span style="font-size: 12px;"> <% @users = User.where(id: comment.user_id) %><% @users.each do |user| %> <%= user.email %><% end %></span> <br>
+      <span style="font-size: 10px;"> <%= comment.addDate %> </span> <br>
+        <span>   <%= comment.content %> </span>
+        <% if comment.user_id == current_user.id %>
+          <%= link_to "Edytuj komentarz", comments_edit_path(id: comment.id) %>
+          <%= link_to "Usuń komentarz", comment, method: :delete, data: { confirm: "Na pewno?" } %>
+        <% end %>
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
-   
-        <li class="collection-item avatar">
-       <%= image_tag("user.png", class: "circle") %>
-      <p>
-      <span style="font-size: 12px;"> niemcy@wp.pl </span> <br>
-      <span style="font-size: 10px;"> 19.05.2017 15:41 </span> <br>
-        <span>  Słaby projekt pozdrawiam! </span>
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
+   <% end %>
 
 
 
@@ -181,7 +177,7 @@
       </div>
       <div class="card-action">
       
-          <%= link_to "Nowy Komentarz", root_path %>
+          <%= link_to "Nowy Komentarz", comments_new_path(:project_id => @project.id) %>
     
       </div>
    </div>
