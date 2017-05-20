@@ -11,24 +11,48 @@
          
          <%= @assignments = Assignment.where(user_id: current_user.id).count %>
 
-
-         
-         
          </div> Liczba Sprintów:  <div class="chip">
+
+         <% @numberOfSprints = 0 %> 
+         <% @assignments = Assignment.where(user_id: current_user.id) %>
+         <% @assignments.each do |assignment| %>
+            <% @projects = Project.where(id: assignment.project_id) %>
+            <% @projects.each do |project| %>
+              <% @sprints = Sprint.where(project_id: project.id) %>
+              <% @sprints.each do |sprint| %>
+                <% @numberOfSprints+=1 %>
+              <% end %>
+            <% end %>
+         <% end %>
+         <%= @numberOfSprints %>
+
+         </div> Liczba Zadań:  <div class="chip">
          
-          todo
-         
-         
-         
-         </div> Liczba Zadań:  <div class="chip">todo</div> </center>
+         <% @numberOfTasks = 0 %> 
+         <% @assignments = Assignment.where(user_id: current_user.id) %>
+         <% @assignments.each do |assignment| %>
+            <% @projects = Project.where(id: assignment.project_id) %>
+            <% @projects.each do |project| %>
+              <% @sprints = Sprint.where(project_id: project.id) %>
+              <% @sprints.each do |sprint| %>
+                <% @tasks = Task.where(sprint_id: sprint.id) %>
+                <% @tasks.each do |tasks| %>
+                  <% @numberOfTasks+=1 %>
+                <% end %>
+              <% end %>
+            <% end %>
+         <% end %>
+         <%= @numberOfTasks %>
+
+         </div> </center>
 
          <div class="divider"></div>
 
       </div>
       <div class="card-action">
-         <%= link_to "Nowy projekt", projects_new_path %>
-        <%= link_to "Nowy sprint", sprints_new_path %>
-          <%= link_to "Nowe zadanie", tasks_new_path %>
+      <%= link_to "Nowy projekt", projects_new_path %>
+      <%= link_to "Nowy sprint", sprints_new_path %>
+      <%= link_to "Nowe zadanie", tasks_new_path %>
 
       </div>
    </div>
