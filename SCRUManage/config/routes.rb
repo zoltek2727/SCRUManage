@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'comments/edit'
+
+  get 'comments/new'
+
+  get 'comments/edi'
+
   get 'assignments/new'
 
   get 'assignments/edit'
@@ -33,5 +39,8 @@ Rails.application.routes.draw do
     get 'assignments/new'
     get 'assignments/edit'
     resources :assignments
+    get 'comments/new'
+    get 'comments/edit'
+    resources :comments
   end
 end
