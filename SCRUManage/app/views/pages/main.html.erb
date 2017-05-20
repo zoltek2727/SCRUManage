@@ -2,7 +2,7 @@
 
 
 <div class="col s12 m6">
-   <div class="card  red darken-3">
+   <div class="card red indigo darken-2">
       <div class="card-content white-text">
          <span class="card-title"><b>N</b>a Skróty</span>
          <p class="additionalinfo">W tej sekcji mamy dostęp do najważniejszych akcji. (Tylko admin)</p>
@@ -36,29 +36,10 @@
 
 
 
-<div class="col s12 m6">
-   <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-         <span class="card-title"><b>L</b>ista Użytkowników</span>
-         <p class="additionalinfo">W tej sekcji dodajemy użytkowników do projektów. (Tylko admin)</p>
-         <div class="divider"></div>
-         <ul class="white-text">
-            <% @users = User.select("email") %>
-            <% @users.each do |user| %>
-            <li>
-               <%= user.email %>
-            </li>
-            <% end %>
-         </ul>
-      </div>
-      <div class="card-action">
-         <a href="#">Zarządzanie Użytkownikami i Rolami</a>
-      </div>
-   </div>
-</div>
+
 
 <div class="col s12 m6">
-   <div class="card red indigo darken-2">
+   <div class="card red darken-3">
       <div class="card-content white-text">
          <span class="card-title"><b>P</b>rojekty</span>
          <p class="additionalinfo">W tej sekcji dodajemy Projekty. (Tylko admin)</p>
@@ -99,7 +80,7 @@
 
 
 <div class="col s12 m6">
-   <div class="card  teal darken-3">
+   <div class="card amber darken-4">
       <div class="card-content white-text">
          <span class="card-title"><b>S</b>printy</span>
          <p class="additionalinfo">W tej sekcji dodajemy sprinty do projektów. (Tylko admin)</p>
@@ -112,7 +93,7 @@
     <li class="collection-item">
 
       
-     <b class="sprint"> Projekt:  <%= link_to project.name, projects_index_path(:id => project.id) %> </b>
+     <p class="sprint"> Projekt:  <%= link_to project.name, projects_index_path(:id => project.id) %> </p>
       <div class="divider"></div>
        <% @sprints = Sprint.where(project_id: project.id) %>
         <% @sprints.each do |sprint| %>
@@ -137,7 +118,7 @@
 
 
 <div class="col s12 m6">
-   <div class="card  deep-orange darken-4">
+   <div class="card green darken-3">
       <div class="card-content white-text">
          <span class="card-title"><b>Z</b>adania</span>
          <p class="additionalinfo">W tej sekcji dodajemy zadania do sprintów. (Tylko admin)</p>
@@ -150,7 +131,7 @@
               <% @sprints = Sprint.where(project_id: project.id) %>
               <% @sprints.each do |sprint| %>
               <li class="collection-item">
-                <b class="sprint"> Sprint: </b> <b style="color: #195210;"><%= sprint.sprintName %> </b>
+                <span class="sprint"> Sprint: </span> <span style="color: #195210; font-size: 16px;"><%= sprint.sprintName %> </span>
                 <div class="divider"></div>
                 <% @tasks = Task.where(sprint_id: sprint.id) %>
                 <% @tasks.each do |task| %>

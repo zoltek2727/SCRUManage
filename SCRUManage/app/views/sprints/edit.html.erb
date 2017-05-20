@@ -30,7 +30,7 @@
         <%= f.collection_select :project_id, Project.order(:name),:id,:name, include_blank: false%>
 
     <div class="actions">
-        <%= f.submit "Edytuj", :class => 'waves-effect waves-light btn' %>
+        <%= f.submit "Zapisz", :class => 'waves-effect waves-light btn' %>
     </div>
 
 <% end %>
