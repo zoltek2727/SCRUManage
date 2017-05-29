@@ -26,8 +26,7 @@
         <%= f.text_field :EndDate, class: "datepicker"%>
     </div>
 
-        <%= f.label :projects_id %>
-        <%= f.collection_select :project_id, Project.order(:name),:id,:name, include_blank: false%>
+        <%= f.hidden_field :project_id, :value => params[:id] %>
 
     <div class="actions">
         <%= f.submit "Utwórz", :class => 'waves-effect waves-light btn' %>

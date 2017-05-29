@@ -1,6 +1,11 @@
 class SprintsController < ApplicationController
 before_filter :authenticate_user!
 
+  def index
+    @sprints = Sprint.all
+    @sprint = Sprint.find(params[:id])
+  end
+
   def new
     @sprint = Sprint.new
     @sprints = Sprint.all
@@ -27,6 +32,12 @@ before_filter :authenticate_user!
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Sprint.find(params[:id]).destroy
+    flash[:success] = "Sprint usunięty"
+    redirect_to '/pages/main'
   end
 
   private

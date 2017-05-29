@@ -5,12 +5,12 @@
 <div class="col s12 m6">
    <div class="card  red darken-3">
       <div class="card-content white-text">
-         <span class="card-title"> <%= @project.name%> </span>
-         <p class="additionalinfo"><%= @project.description %></p>
+         <span class="card-title"> <%= @sprint.sprintName%> </span>
+         <p class="additionalinfo"><%= @sprint.sprintDescription %></p>
           <div class="divider"></div>
 
           
-              <% @assignments = Assignment.where(user_id: current_user.id).where(project_id: @project.id) %>
+              <% @assignments = Assignment.where(user_id: current_user.id).where(project_id: @sprint.project_id) %>
   <% @assignments.each do |assignment| %>
         <% @projectRole = ProjectRole.where(id: assignment.projectRole_id) %>
            <% @projectRole.each do |project| %>
@@ -18,59 +18,41 @@
     <% end %>
   <% end %>
 
-          <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= @project.StartDate%> </p>
-          <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= @project.EndDate %> </p>
+          <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= @sprint.StartDate%> </p>
+          <p style="color: #f7ff01; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= @sprint.EndDate %> </p>
          <div class="divider"></div>
 
 <ul class="black-text collection">
           
-        <% @sprints = Sprint.where(project_id: @project.id) 
-          @sprints.each do |sprint| %>
+        <% @tasks = Task.where(sprint_id: @sprint.id) 
+          @tasks.each do |task| %>
            <li class="sprintxx collection-item avatar"> 
 
-          <%= image_tag("sprint.png", :class => "circle") %>
-          <span class="title"> <%= link_to sprint.sprintName, sprints_index_path(:id => sprint.id) %></span>
-          <p class="pdsc"> <%= sprint.sprintDescription %> </p>
-          <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= sprint.StartDate%> </p>
-          <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= sprint.EndDate %> </p>
-          <% @adminAssignments = Assignment.where(project_id: @project.id)
-              @adminAssignments.each do |adminAssignment| %>
-            <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
-              <%= link_to "Edytuj sprint", sprints_edit_path(:id => sprint.id), :class => "white-text secondary-content" %>
-              <%= link_to "Usuń sprint", sprint, method: :delete, data: { confirm: "Na pewno?" }, :class => "white-text third-content" %>
-            <% end %>
-          <% end %>
-           </li>
-            <% @tasks = Task.where(sprint_id: sprint.id)
-            @tasks.each do |task| %>
-             <li class="taskxx  collection-item avatar">  
-            <%= image_tag("task.png", :class => "circle") %>
-          <span class="title"> <%= task.taskName %></span>
-
-             <p class="zdsc">  <%= task.taskDescription %> </p>
-
-
-
+          <%= image_tag("task.png", :class => "circle") %>
+          <span class="title"><%= task.taskName %></span>
+          <p class="pdsc"> <%= task.taskDescription %> </p>
           <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= task.taskStart%> </p>
           <p style="color: #2f2f2f; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= task.taskEnd %> </p>
-            <% @adminAssignments = Assignment.where(project_id: @project.id)
-              @adminAssignments.each do |adminAssignment| %>
-              <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
-                <%= link_to "Edytuj zadanie", tasks_edit_path(:id => task.id), :class => "white-text secondary-content" %>
-                <%= link_to "Usuń zadanie", task, method: :delete, data: { confirm: "Na pewno?" }, :class => "white-text third-content" %>
-              <% end %>
+          <% @adminAssignments = Assignment.where(project_id: @sprint.project_id)
+            @adminAssignments.each do |adminAssignment| %>
+            <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1 %>
+              <%= link_to "Edytuj zadanie", tasks_edit_path(:id => task.id), :class => "white-text secondary-content" %>
+              <%= link_to "Usuń zadanie", task, method: :delete, data: { confirm: "Na pewno?" }, :class => "white-text third-content" %>
             <% end %>
           <% end %>
+
+           </li>
+            
         <% end %>        
     </ul>
 
       </div>
       <div class="card-action">
-      <% @adminAssignments = Assignment.where(project_id: @project.id)
+      <% @adminAssignments = Assignment.where(project_id: @sprint.project_id)
         @adminAssignments.each do |adminAssignment| %>
-        <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
-          <%= link_to "Nowy sprint", sprints_new_path(:id => @project.id) %>
-          <%= link_to "Edytuj projekt", projects_edit_path(:id => @project.id) %>
+        <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1 %>
+          <%= link_to "Nowe zadanie", tasks_new_path(:id => @sprint.id) %>
+          <%= link_to "Edytuj sprint", sprints_edit_path(:id => @sprint.id) %>
         <% end %>
       <% end %>
 
@@ -106,7 +88,7 @@
      <tbody>
           <tr>
 
-                <% @assignments = Assignment.where(project_id: @project.id)
+                <% @assignments = Assignment.where(project_id: @sprint.project_id)
         @assignments.each do |assignment| %>
         <% @users = User.where(id: assignment.user_id)
         
@@ -118,7 +100,7 @@
             @projectRoles.each do |projectRole| %>
          <td>   <%= projectRole.projRoleName %> </td>
           <% end %>
-          <% @adminAssignments = Assignment.where(project_id: @project.id)
+          <% @adminAssignments = Assignment.where(project_id: @sprint.project_id)
             @adminAssignments.each do |adminAssignment| %>
             <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1 && assignment.user_id != current_user.id %>
           <td>    <%= link_to "Edytuj przydział", assignments_edit_path(:id => assignment.id) %></td>
@@ -138,11 +120,11 @@
          </table>
       </div>
       <div class="card-action">
-               <% @adminAssignments = Assignment.where(project_id: @project.id)
+               <% @adminAssignments = Assignment.where(project_id: @sprint.project_id)
         @adminAssignments.each do |adminAssignment| %>
         <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1%>
           <% if @adminAssignments.count != @users = User.all.count %>
-            <%= link_to "Nowy przydział", assignments_new_path(:project_id => @project.id) %>
+            <%= link_to "Nowy przydział", assignments_new_path(:project_id => @sprint.project_id) %>
           <% end %>
         <% end %>
       <% end %>
@@ -167,7 +149,7 @@
 
 
   <ul class="collection">
-  <% @comments = Comment.where(project_id: @project.id) %>
+  <% @comments = Comment.where(project_id: @sprint.project_id) %>
   <% @comments.each do |comment| %>
     <li class="collection-item avatar">
        <%= image_tag("user.png", class: "circle") %>
@@ -175,9 +157,9 @@
       <span style="font-size: 12px;"> <% @users = User.where(id: comment.user_id) %><% @users.each do |user| %> <%= user.email %><% end %></span> <br>
       <span style="font-size: 10px;"> <%= comment.addDate %> </span> <br>
         <span>   <%= comment.content %> </span>
-        <% @assignments = Assignment.where(project_id: @project.id).where(user_id: current_user.id) %>
+        <% @assignments = Assignment.where(project_id: @sprint.project_id).where(user_id: current_user.id) %>
           <% @assignments.each do |assignment| %>
-            <% if comment.user_id == current_user.id || assignment.projectRole_id == 1%>
+            <% if comment.user_id == current_user.id || assignment.projectRole_id == 1 %>
               <%= link_to "Edytuj komentarz", comments_edit_path(id: comment.id) %>
               <%= link_to "Usuń komentarz", comment, method: :delete, data: { confirm: "Na pewno?" } %>
             <% end %>
@@ -195,7 +177,7 @@
       </div>
       <div class="card-action">
       
-          <%= link_to "Nowy Komentarz", comments_new_path(:project_id => @project.id) %>
+          <%= link_to "Nowy Komentarz", comments_new_path(:project_id => @sprint.project_id) %>
     
       </div>
    </div>

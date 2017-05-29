@@ -25,10 +25,7 @@
         <%= f.label :taskEnd %>
         <%= f.text_field :taskEnd, class: "datepicker"%>
     </div>
-
-        <%= f.label :sprint_id %>
-        <%= f.collection_select :sprint_id, Sprint.order(:sprintName),:id,:sprintName, include_blank: false%>
-
+    
     <div class="actions">
         <%= f.submit "Zapisz", :class => 'waves-effect waves-light btn' %>
     </div>
