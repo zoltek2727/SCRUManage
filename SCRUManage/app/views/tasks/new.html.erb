@@ -26,8 +26,7 @@
         <%= f.text_field :taskEnd, class: "datepicker"%>
     </div>
 
-        <%= f.label :sprint_id %>
-        <%= f.collection_select :sprint_id, Sprint.order(:sprintName),:id,:sprintName, include_blank: false%>
+        <%= f.hidden_field :sprint_id, :value => params[:id] %>
 
     <div class="actions">
         <%= f.submit "Utwórz", :class => 'waves-effect waves-light btn' %>

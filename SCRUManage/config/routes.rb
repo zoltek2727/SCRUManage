@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :projects
     get 'sprints/new'
     get 'sprints/edit'
+    get 'sprints/index'
     resources :sprints
     get 'tasks/new'
     get 'tasks/edit'

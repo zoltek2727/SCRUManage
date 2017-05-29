@@ -35,6 +35,12 @@ before_filter :authenticate_user!
     end
   end
 
+  def destroy
+    Project.find(params[:id]).destroy
+    flash[:success] = "Projekt usunięty"
+    redirect_to '/pages/main'
+  end
+
   private
 
   def project_params

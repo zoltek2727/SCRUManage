@@ -8,8 +8,16 @@
          <p class="additionalinfo">W tej sekcji mamy dostęp do najważniejszych akcji. (Tylko admin)</p>
           <div class="divider"></div>
          <center> Liczba Projektów:  <div class="chip">
-         
-         <%= @assignments = Assignment.where(user_id: current_user.id).count %>
+
+         <% @numberOfProjects = 0 %> 
+         <% @assignments = Assignment.where(user_id: current_user.id) %>
+         <% @assignments.each do |assignment| %>
+            <% @projects = Project.where(id: assignment.project_id) %>
+            <% @projects.each do |project| %>
+              <% @numberOfProjects+=1 %>
+            <% end %>
+         <% end %>
+         <%= @numberOfProjects %>
 
          </div> Liczba Sprintów:  <div class="chip">
 
@@ -51,8 +59,6 @@
       </div>
       <div class="card-action">
       <%= link_to "Nowy projekt", projects_new_path %>
-      <%= link_to "Nowy sprint", sprints_new_path %>
-      <%= link_to "Nowe zadanie", tasks_new_path %>
 
       </div>
    </div>
@@ -88,6 +94,12 @@
           <% end %>
           <p style="color: #383838; font-size: 11px;"> <i class="tiny material-icons">schedule</i> Data rozpoczęcia: <%= project.StartDate%> </p>
           <p style="color: #383838; font-size: 11px;"> <i class="tiny material-icons">alarm_off</i> Planowana data zakończenia: <%= project.EndDate %> </p>
+          <% @adminAssignments = Assignment.where(project_id: project.id)
+            @adminAssignments.each do |adminAssignment| %>
+            <% if adminAssignment.user_id == current_user.id && adminAssignment.projectRole_id == 1 %>
+              <%= link_to "Usuń projekt", project, method: :delete, data: { confirm: "Na pewno?" } %>
+            <% end %>
+          <% end %>
       </li>
     <% end %>
   <% end %>
@@ -122,7 +134,7 @@
        <% @sprints = Sprint.where(project_id: project.id) %>
         <% @sprints.each do |sprint| %>
        
-           <p class-"sprint">  <%= sprint.sprintName %> </p>
+           <p class-"sprint">  <%= link_to sprint.sprintName, sprints_index_path(:id => sprint.id) %> </p>
            <p class="sprintdsc">  <%= sprint.sprintDescription %> </p>
         <% end %>
      
@@ -131,9 +143,6 @@
 <% end %>
 
          </ul>
-      </div>
-      <div class="card-action">
-         <%= link_to "Nowy sprint", sprints_new_path %>
       </div>
    </div>
 </div>
@@ -155,7 +164,7 @@
               <% @sprints = Sprint.where(project_id: project.id) %>
               <% @sprints.each do |sprint| %>
               <li class="collection-item">
-                <span class="sprint"> Sprint: </span> <span style="color: #195210; font-size: 16px;"><%= sprint.sprintName %> </span>
+                <span class="sprint"> Sprint: </span> <span style="color: #195210; font-size: 16px;"><%= sprint.sprintName %> (<%= project.name %>)</span>
                 <div class="divider"></div>
                 <% @tasks = Task.where(sprint_id: sprint.id) %>
                 <% @tasks.each do |task| %>
@@ -168,9 +177,6 @@
             <% end %>
           <% end %>
          </ul>
-      </div>
-      <div class="card-action">
-         <%= link_to "Nowe zadanie", tasks_new_path %>
       </div>
    </div>
 </div>
