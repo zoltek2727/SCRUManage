@@ -36,15 +36,21 @@
   <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete, :class => "waves-effect waves-light btn" %></li>
 <% else %>
    <li><%= link_to "Rejestracja", register_path, :class => "waves-effect waves-light btn" %></li>
-        <li><%= link_to "Logowanie", login_path, :class => "waves-effect waves-light btn" %></li>
+  <li><%= link_to "Logowanie", login_path, :class => "waves-effect waves-light btn" %></li>
 <% end %>
        
       </ul>
+
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="sass.html">todo</a></li>
-        <li><a href="badges.html">todo</a></li>
-        <li><a href="collapsible.html">todo</a></li>
-        <li><a href="mobile.html">todo</a></li>
+      <% if user_signed_in? %>
+      <li>  <%= link_to "Strona główna", root_path %> </li>
+    <li> <%= link_to "Nowy projekt", projects_new_path %></li>
+    <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+        <li>  <%= link_to "Strona główna", root_path %> </li>
+        <li><%= link_to "Rejestracja", register_path %></li>
+        <li><%= link_to "Logowanie", login_path %></li>
+        <% end %>
       </ul>
     </div>
   </nav>
