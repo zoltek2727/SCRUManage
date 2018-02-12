@@ -10,7 +10,94 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311175307) do
+ActiveRecord::Schema.define(version: 20170520202213) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "projectRole_id"
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.index ["projectRole_id"], name: "index_assignments_on_projectRole_id"
+    t.index ["project_id"], name: "index_assignments_on_project_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "addDate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.index ["project_id"], name: "index_comments_on_project_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "comments_projects", force: :cascade do |t|
+    t.text     "content_comProj"
+    t.datetime "date_comProj"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.index ["project_id"], name: "index_comments_projects_on_project_id"
+    t.index ["user_id"], name: "index_comments_projects_on_user_id"
+  end
+
+  create_table "project_roles", force: :cascade do |t|
+    t.string   "projRoleName"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "StartDate"
+    t.datetime "EndDate"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "sprint_states", force: :cascade do |t|
+    t.string   "sprintStateName"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "sprints", force: :cascade do |t|
+    t.string   "sprintName"
+    t.text     "sprintDescription"
+    t.datetime "StartDate"
+    t.datetime "EndDate"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "project_id"
+    t.integer  "sprintState_id"
+    t.index ["project_id"], name: "index_sprints_on_project_id"
+    t.index ["sprintState_id"], name: "index_sprints_on_sprintState_id"
+  end
+
+  create_table "task_states", force: :cascade do |t|
+    t.string   "taskStateName"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "taskName"
+    t.datetime "taskStart"
+    t.datetime "taskEnd"
+    t.text     "taskDescription"
+    t.time     "taskEstTime"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "sprint_id"
+    t.integer  "taskState_id"
+    t.index ["sprint_id"], name: "index_tasks_on_sprint_id"
+    t.index ["taskState_id"], name: "index_tasks_on_taskState_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

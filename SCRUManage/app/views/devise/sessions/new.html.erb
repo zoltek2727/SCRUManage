@@ -1,4 +1,8 @@
-<h2>Log in</h2>
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card cardcenter">
+            <div class="card-content white-text">
+              <span class="card-title">Logowanie</span>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -7,20 +11,26 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, "Hasło" %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :remember_me, "Zapamiętaj mnie" %>
     </div>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Zaloguj", :class => 'waves-effect waves-light btn' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+            </div>
+          </div>
+        </div>
+      </div>

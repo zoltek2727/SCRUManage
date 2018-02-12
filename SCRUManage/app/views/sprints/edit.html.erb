@@ -1,0 +1,38 @@
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card cardcenter">
+            <div class="card-content white-text">
+              <span class="card-title">Edytuj sprint</span>
+
+<%= form_for @sprint do |f| %>
+
+    <div class="field">
+        <%= f.label :sprintName %>
+        <%= f.text_field :sprintName, autofocus: true %>
+    </div>
+
+    <div class="field">
+        <%= f.label :sprintDescription %>
+        <%= f.text_field :sprintDescription %>
+    </div>
+
+        <div class="field">
+        <%= f.label :StartDate %>
+        <%= f.text_field :StartDate, class: "datepicker"%>
+    </div>
+
+        <div class="field">
+        <%= f.label :EndDate %>
+        <%= f.text_field :EndDate, class: "datepicker"%>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Zapisz", :class => 'waves-effect waves-light btn' %>
+    </div>
+
+<% end %>
+
+        </div>
+          </div>
+        </div>
+      </div>

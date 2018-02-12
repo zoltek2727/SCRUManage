@@ -1,0 +1,2 @@
+class SprintState < ApplicationRecord
+end

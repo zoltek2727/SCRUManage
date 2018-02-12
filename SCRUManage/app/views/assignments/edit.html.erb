@@ -1,0 +1,28 @@
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card cardcenter">
+            <div class="card-content white-text">
+              <span class="card-title">Nowy przydział</span>
+
+<%= form_for @assignment do |f| %>
+
+        Edytuejsz dla:
+        </br>
+        <% @users = User.where(id: @assignment.user_id) %>
+        <% @users.each do |user| %>
+          <%= user.email %>
+        <% end %>
+
+        <%= f.label :Rola %>
+        <%= f.collection_select :projectRole_id, ProjectRole.order(:projRoleName),:id,:projRoleName, include_blank: false%>
+
+    <div class="actions">
+        <%= f.submit "Przydziel", :class => 'waves-effect waves-light btn' %>
+    </div>
+
+<% end %>
+
+        </div>
+          </div>
+        </div>
+      </div>

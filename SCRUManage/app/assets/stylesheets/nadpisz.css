@@ -1,0 +1,6 @@
+/* override standard datetime picker css */
+input[type=text][readonly="readonly"]{
+
+color: inherit;
+    border-bottom: 1px solid #9e9e9e;
+}

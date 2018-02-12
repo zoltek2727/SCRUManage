@@ -4,14 +4,119 @@
     <title>SCRUManage</title>
     <%= csrf_meta_tags %>
 
+
+<%= stylesheet_link_tag "https://unpkg.com/flatpickr/dist/flatpickr.min.css" %> 
+
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "nowe.css" %> 
+<%= javascript_include_tag 'https://unpkg.com/flatpickr'%>
+<%= javascript_include_tag 'https://npmcdn.com/flatpickr/dist/l10n/pl.js'%>
+
+        <%= stylesheet_link_tag "nadpisz.css" %> 
+
+
   </head>
 
   <body>
-      <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <header>
+   <nav>
+    <div class="nav-wrapper">
+    <%= link_to "SCRUManage", root_path, :class => "brand-logo" %>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+    <% if user_signed_in? %>
+  
+  <li>Zalogowano jako   <div class="chip">
+    <%= image_tag("user.png") %>
+    <%= current_user.email %>
+  </div> </li>
+  <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete, :class => "waves-effect waves-light btn" %></li>
+<% else %>
+   <li><%= link_to "Rejestracja", register_path, :class => "waves-effect waves-light btn" %></li>
+  <li><%= link_to "Logowanie", login_path, :class => "waves-effect waves-light btn" %></li>
+<% end %>
+       
+      </ul>
+
+      <ul class="side-nav" id="mobile-demo">
+      <% if user_signed_in? %>
+      <li>  <%= link_to "Strona główna", root_path %> </li>
+    <li> <%= link_to "Nowy projekt", projects_new_path %></li>
+    <li><%= link_to "Wyloguj", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+        <li>  <%= link_to "Strona główna", root_path %> </li>
+        <li><%= link_to "Rejestracja", register_path %></li>
+        <li><%= link_to "Logowanie", login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main >
+      <% flash.each do |message_type, message| %>
+    <%= javascript_tag "Materialize.toast('#{message}', 4000)" %>
+<% end %>
 
     <%= yield %>
+
+</main>
+ <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Kontakt</h5>
+                <p class="grey-text text-lighten-4">Link do naszego projektu: <a class="grey-text text-lighten-5" href="https://github.com/barpaw/SCRUManage">github</a></p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Autorzy</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/tomekgolab94">Tomasz Gołębiewski</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/zoltek2727">Sebastian Żółtowski</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/barpaw">Bartosz Pawlak</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/Stegenda">Adam Stegenda</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright barpaw, zoltek, stegenda, gołomp
+            
+            </div>
+          </div>
+        </footer>
+            
+
+
+    <script>
+    $(document).ready(function(){
+      $(".button-collapse").sideNav();
+    });
+
+    $(document).ready(function() {
+    // Select - Single
+    $('select:not([multiple])').material_select();
+});
+
+    $(document).ready(function() {
+      var $container = $('main');
+    // initialize
+    $container.masonry({
+      columnWidth: '.col',
+      itemSelector: '.col',
+    });
+});
+
+$(".datepicker").flatpickr({
+    enableTime: true,
+    minDate: "today",
+    time_24hr: true,
+    locale: "pl"
+});
+
+    </script>
   </body>
 </html>

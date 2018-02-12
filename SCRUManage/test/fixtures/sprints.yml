@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sprintName: MyString
+  sprintDescription: MyText
+  StartDate: 2017-04-03 22:44:47
+  EndDate: 2017-04-03 22:44:47
+
+two:
+  sprintName: MyString
+  sprintDescription: MyText
+  StartDate: 2017-04-03 22:44:47
+  EndDate: 2017-04-03 22:44:47

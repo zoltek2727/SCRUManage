@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// DODANE
+//= require materialize-sprockets
+//= require materialize/extras/nouislider
+
+//= require materialize
+
+//= require masonry.pkgd
+
+
+
